@@ -1,0 +1,47 @@
+[
+  {
+    "job_id": 1,
+    "job_name": "系统默认（无参）",
+    "job_group": "DEFAULT",
+    "invoke_target": "ryTask.ryNoParams",
+    "cron_expression": "0/10 * * * * ?",
+    "misfire_policy": "3",
+    "concurrent": "1",
+    "status": "1",
+    "create_by": "admin",
+    "create_time": "2024-05-15 00:53:34",
+    "update_by": "",
+    "update_time": null,
+    "remark": ""
+  },
+  {
+    "job_id": 2,
+    "job_name": "系统默认（有参）",
+    "job_group": "DEFAULT",
+    "invoke_target": "ryTask.ryParams('ry')",
+    "cron_expression": "0/15 * * * * ?",
+    "misfire_policy": "3",
+    "concurrent": "1",
+    "status": "1",
+    "create_by": "admin",
+    "create_time": "2024-05-15 00:53:34",
+    "update_by": "",
+    "update_time": null,
+    "remark": ""
+  },
+  {
+    "job_id": 3,
+    "job_name": "系统默认（多参）",
+    "job_group": "DEFAULT",
+    "invoke_target": "ryTask.ryMultipleParams('ry', true, 2000L, 316.50D, 100)",
+    "cron_expression": "0/20 * * * * ?",
+    "misfire_policy": "3",
+    "concurrent": "1",
+    "status": "1",
+    "create_by": "admin",
+    "create_time": "2024-05-15 00:53:34",
+    "update_by": "",
+    "update_time": null,
+    "remark": ""
+  }
+]

@@ -1,0 +1,30 @@
+[
+  {
+    "role_id": 1,
+    "role_name": "超级管理员",
+    "role_key": "admin",
+    "role_sort": 1,
+    "data_scope": "1",
+    "status": "0",
+    "del_flag": "0",
+    "create_by": "admin",
+    "create_time": "2024-05-15 00:53:28",
+    "update_by": "",
+    "update_time": null,
+    "remark": "超级管理员"
+  },
+  {
+    "role_id": 2,
+    "role_name": "普通角色",
+    "role_key": "common",
+    "role_sort": 2,
+    "data_scope": "2",
+    "status": "0",
+    "del_flag": "0",
+    "create_by": "admin",
+    "create_time": "2024-05-15 00:53:28",
+    "update_by": "",
+    "update_time": null,
+    "remark": "普通角色"
+  }
+]
