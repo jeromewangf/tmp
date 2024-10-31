@@ -1,0 +1,82 @@
+spring:
+  cloud:
+    gateway:
+      locator:
+        enabled: true
+      routes:
+        # 认证中心
+        - id: pig-auth
+          uri: lb://pig-auth
+          predicates:
+            - Path=/auth/**
+        #UPMS 模块
+        - id: pig-upms-biz
+          uri: lb://pig-upms-biz
+          predicates:
+            - Path=/admin/**
+          filters:
+            # 限流配置
+            - name: RequestRateLimiter
+              args:
+                key-resolver: '#{@remoteAddrKeyResolver}'
+                redis-rate-limiter.replenishRate: 100
+                redis-rate-limiter.burstCapacity: 200
+        # 代码生成模块
+        - id: pig-codegen
+          uri: lb://pig-codegen
+          predicates:
+            - Path=/gen/**
+        # 代码生成模块
+        - id: pig-quartz
+          uri: lb://pig-quartz
+          predicates:
+            - Path=/job/**
+        # 固定路由转发配置 无修改
+        - id: openapi
+          uri: lb://pig-gateway
+          predicates:
+            - Path=/v3/api-docs/**
+          filters:
+            - RewritePath=/v3/api-docs/(?<path>.*), /$\{path}/$\{path}/v3/api-docs
+            
+        # demo模块
+        - id: pig-demo
+          uri: lb://demo-biz
+          predicates:
+            - Path=/demo/**
+        
+        - id: pig-process
+          uri: lb://pig-process
+          predicates:
+            - Path=/process/**
+            
+        - id: SIT-FE1
+          uri: lb://pig-process
+          predicates:
+            - Path=/sit_fe1/**
+
+        - id: SIT-FE2
+          uri: lb://sit-fe2
+          predicates:
+            - Path=/sit_fe2/**
+
+        - id: SIT-BO
+          uri: lb://sit-bo
+          predicates:
+            - Path=/sit_bo/**
+
+        - id: UAT-FE1
+          uri: lb://uat-fe1
+          predicates:
+            - Path=/uat_fe1/**
+
+        - id: UAT-FE2
+          uri: lb://uat_fe2
+          predicates:
+            - Path=/uat_fe2/**
+
+        - id: UAT-BO
+          uri: lb://uat-bo
+          predicates:
+            - Path=/uat_bo/**
+            
